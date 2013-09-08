@@ -72,7 +72,7 @@ body {
 
 .body-header {
   position: relative;
-  background-color: #be1f24;
+  background-color: #fff;
   height: 114px;
   top:0px;
 }
@@ -87,8 +87,8 @@ body {
 }
 
 .logo {
-  background: url('../images/e-reolen.png') no-repeat;
-  width: 352px;
+  background: url('../images/coverflow.png') no-repeat;
+  width: 570px;
   height: 100%;
   float: left;
   margin-left:31px;
@@ -158,8 +158,8 @@ input.ui-widget-content { top: 25%; }
   font-size: .9em;
   line-height: 150%;
   margin: 5px;
-  width: 352px;
-  height: 450px;
+  width: 500px;
+  height: 460px;
   color:#000;
 }
 

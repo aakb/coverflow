@@ -1,11 +1,8 @@
 // ITK, Aarhus Kommunes Biblioteker, 2013
 
-var spotdatatype = 'ebog';
-
 var carousel = { };
 
 var myConfig = {
-  folder : 'http://images.spot.ereolen.dk/books/',
   max_image_width : 330,
   max_image_height : 500,
   image_border : 3, // pixels
@@ -14,7 +11,9 @@ var myConfig = {
   set_of_images: 3, // de synlige sæt, før/aktivt/efter
   id_prefix_images : 'imb', // tilfældige unikke tegn
   animation : 1000, // tid i ms
-  opacity : 0.8 // opacity til knapper når animation er aktiv
+  opacity : 0.8, // opacity til knapper når animation er aktiv
+  update_check : 3600*1000, // check hver time
+  update_period : 86400 * 1000 / 2 // reload hver 12. time
 };
 
 Array.prototype.shuffle = function () {
@@ -173,71 +172,81 @@ function create_events() {
     $(window).on('resize', banner_recalculate);
 
     // klik på billede skal trigge popup
-    $(".imagebanner").on("click", "img", function(event){ show_popupbox($(this).data('isbn'));return false; });
+    $(".imagebanner").on("click", "img", function(event){ show_popupbox($(this).data('id'));return false; });
 
 }
 
 function create_li_element (key, value) {
   // opretter li element til brug i banneret
-  return '<li><img id="' + myConfig.id_prefix_images + key + '" data-isbn="' + value + '" src="' + myConfig.folder + spotdata.isbn[value].i + '" width="' + myConfig.max_image_width + '" height="' + myConfig.max_image_height + '" alt="" /></li>'
+  return '<li><img id="' + myConfig.id_prefix_images + key + '" data-id="' + value + '" src="' + bannerdata.prefix + bannerdata.id[value].src + '" width="' + myConfig.max_image_width + '" height="' + myConfig.max_image_height + '" alt="" /></li>'
 }
 
 function update_li_element(key, value){
   // opdaterer li element i banneret
-  $('#' + myConfig.id_prefix_images + key).attr('src', myConfig.folder + spotdata.isbn[value].i ).data('isbn', value);
+  $('#' + myConfig.id_prefix_images + key).attr('src', bannerdata.prefix + bannerdata.id[value].src ).data('id', value);
 }
 
-function create_menu(){
+// function create_menu(){
 
-  var make_item = function(ele){ return '<a href="#" class="menu_' + ( ele.sid ? ele.sid : 'nolink' ) + '">'+ ele.label +'</a>'; }
+  // var make_item = function(ele){ return '<a href="#" class="menu_' + ( ele.sid ? ele.sid : 'nolink' ) + '">'+ ele.label +'</a>'; }
 
-  var s = '<ul id="menu">'
-  for ( var i = 0; i < spotdata.menu.length; i++) {
-    s += '<li>' + make_item( spotdata.menu[i][0] );
+  // var s = '<ul id="menu">'
+  // for ( var i = 0; i < bannerdata.menu.length; i++) {
+    // s += '<li>' + make_item( bannerdata.menu[i][0] );
 
-    if ( spotdata.menu[i].length > 1 ) {
-      s += '<ul>'
-      for ( var j = 1; j < spotdata.menu[i].length; j++) {
-        s += '<li class="sub">' + make_item( spotdata.menu[i][j] ) + '</li>';
-      }
-      s += '</ul>'
-    }
-    s += '</li>'
-  }
-  s += '</ul>'
+    // if ( bannerdata.menu[i].length > 1 ) {
+      // s += '<ul>'
+      // for ( var j = 1; j < bannerdata.menu[i].length; j++) {
+        // s += '<li class="sub">' + make_item( bannerdata.menu[i][j] ) + '</li>';
+      // }
+      // s += '</ul>'
+    // }
+    // s += '</li>'
+  // }
+  // s += '</ul>'
 
-  $('#menucontainer').html(s);
-  $('#menu').menu({ icons: { submenu: "ui-icon-blank" }, position: { my: "left top", at: "left bottom" } });
+  // $('#menucontainer').html(s);
+  // $('#menu').menu({ icons: { submenu: "ui-icon-blank" }, position: { my: "left top", at: "left bottom" } });
 
-  $.each( spotdata.list, function( key, value ) { $('.menu_' + key).click( function() { $('#menu').menu("collapseAll", null, true); create_banner( value ); return false })});
-  $('.menu_nolink' ).click( function() { return false });
-}
+  // $.each( bannerdata.list, function( key, value ) { $('.menu_' + key).click( function() { $('#menu').menu("collapseAll", null, true); create_banner( value ); return false })});
+  // $('.menu_nolink' ).click( function() { return false });
+// }
 
-function show_popupbox(isbn) {
+function show_popupbox(idno) {
 
   // rydop
   $('#message').html('');
   $('input:text').val('');
-
   //
-  if (spotdata.isbn[isbn].d == null) {
-    spotdata.isbn[isbn].d = '';
-  }
+  // if (bannerdata.id[idno].d == null) {
+    // bannerdata.id[idno].d = '';
+  // }
 
-  $('#bookdata').html( '<div><h3>' + spotdata.isbn[isbn].t + '</h3><img class="popup-image" src="' + myConfig.folder + spotdata.isbn[isbn].i + '" />' + spotdata.isbn[isbn].d + '</div>');
+  $('#bookdata').html( '<div><h3>' + bannerdata.id[idno].t + '</h3>' 
+  //+ '<img class="popup-image" src="' + bannerdata.prefix + bannerdata.id[idno].src + '" />' 
+  //+ bannerdata.id[idno].d 
+  + '<iframe width="500" height="400" src="http://www.youtube.com/embed/' + bannerdata.id[idno].youtubeid + '?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>'
+  + '</div>');
 
   // gem values i formen
-  $('#isbn').val(isbn);
-  $('#titel').val(spotdata.isbn[isbn].t);
-  $('#type').val(spotdatatype);
-
+//  $('#idno').val(idno);
+//  $('#titel').val(bannerdata.id[idno].t);
+  
     // vis boksen (ifald den tidligere er fadeout
   $('#popup').show();  // hide efter submit 4 sek
-  $('#myform').show(); // hide efter submit
+ // $('#myform').show(); // hide efter submit
 
   // sæt fancyboks op og aktiver den
   $("#inline").fancybox().click();
 
+}
+
+function check_updates(){
+  // kører periodevis og reloader hele siden efter fastsat tid
+  var now=(new Date()).getTime();
+  if ( now - carousel.starttime > myConfig.update_period ) {
+    location.reload(true)
+  }
 }
 
 $(document).ready(function(){
@@ -266,10 +275,10 @@ $(document).ready(function(){
   $('.keyimg').click(function(){ $('#email').getkeyboard().reveal();});
 
   // menuen
-  create_menu();
+  //create_menu();
 
   // imagebanner
-  create_banner(spotdata.list[spotdata.first]);
+  create_banner(bannerdata.list[bannerdata.first]);
 
   // initialiser events
   create_events();
@@ -319,4 +328,9 @@ $(document).ready(function(){
         });
       return false;
     });
+
+   // check for updates
+  carousel.starttime = (new Date()).getTime();
+  setInterval(check_updates, myConfig.update_check);
+
 });
