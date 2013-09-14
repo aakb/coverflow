@@ -269,4 +269,5 @@ input.ui-widget-content { top: 25%; }
 .imagebanner img {
   border:3px solid #fff;
   margin: 0 80px 0 0;
+  cursor: pointer;
 }
