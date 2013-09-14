@@ -5,6 +5,8 @@ var carousel = { };
 var myConfig = {
   max_image_width : 330,
   max_image_height : 330,
+  iframe_width : 480, 
+  iframe_height : 360, // 4/3 forhold 
   image_border : 3, // pixels
   space_between_images : 0.20, // procent
   visible_images : 3, // synlige
@@ -222,11 +224,12 @@ function show_popupbox(idno) {
     // bannerdata.id[idno].d = '';
   // }
 
-  $('#popupdata').html( '<div><h3>' + bannerdata.id[idno].t + '</h3>' 
+  $('#popupdata').html( '<h3>' + bannerdata.id[idno].t + '</h3>' 
   //+ '<img class="popup-image" src="' + bannerdata.prefix + bannerdata.id[idno].src + '" />' 
   //+ bannerdata.id[idno].d 
-  + '<iframe width="500" height="400" src="http://www.youtube.com/embed/' + bannerdata.id[idno].youtubeid + '?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>'
-  + '</div>');
+  + '<iframe width="'+ myConfig.iframe_width +'" height="'+ myConfig.iframe_height +'" src="http://www.youtube.com/embed/' + bannerdata.id[idno].youtubeid + '?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>'
+  + '<div class="popup-desc">' + bannerdata.id[idno].d + '</div>'
+  + '');
 
   // gem values i formen
 //  $('#idno').val(idno);
@@ -237,7 +240,8 @@ function show_popupbox(idno) {
  // $('#myform').show(); // hide efter submit
 
   // sæt fancyboks op og aktiver den
-  $("#inline").fancybox().click();
+  var maxfancyheight = Math.floor($('#imagecontainer').outerHeight()*0.75);
+  $("#inline").fancybox({ maxHeight : maxfancyheight }).click();
 
 }
 

@@ -155,11 +155,11 @@ input.ui-widget-content { top: 25%; }
 
 #popup {
   font-family: Arial,Helvetica,sans-serif;
-  font-size: .9em;
-  line-height: 150%;
-  margin: 5px;
-  width: 500px;
-  height: 460px;
+  font-size: .8em;
+  line-height: 125%;
+  margin: 5px;/*
+  width: 555px;
+  height: 460px;*/
   color:#000;
 }
 
@@ -168,6 +168,7 @@ input.ui-widget-content { top: 25%; }
 }
 
 #popup #popupdata img { width: 100px;height:auto;float:left;padding:0 5px 5px 0; }
+#popup #popupdata .popup-desc {padding-top:5px;width:480px;}
 
 #myform { clear:both;}
 
