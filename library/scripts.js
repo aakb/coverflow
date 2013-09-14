@@ -4,7 +4,7 @@ var carousel = { };
 
 var myConfig = {
   max_image_width : 330,
-  max_image_height : 500,
+  max_image_height : 330,
   image_border : 3, // pixels
   space_between_images : 0.20, // procent
   visible_images : 3, // synlige
