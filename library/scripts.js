@@ -217,8 +217,8 @@ function update_li_element(key, value){
 function show_popupbox(idno) {
 
   // rydop
-  $('#message').html('');
-  $('input:text').val('');
+  // $('#message').html('');
+  // $('input:text').val('');
   //
   // if (bannerdata.id[idno].d == null) {
     // bannerdata.id[idno].d = '';
@@ -256,27 +256,27 @@ function check_updates(){
 $(document).ready(function(){
 
   // keyboard
-  $('#email').keyboard({ openOn : '', stayOpen : true,
-     layout : 'custom',
-     customLayout: {
-        'default' : [
-          "@ 1 2 3 4 5 6 7 8 9 0 + @ {b}",
-          "q w e r t y u i o p \u00e5 \u00a8",
-          " a s d f g h j k l \u00e6 \u00f8 ' ",
-          "{shift} < z x c v b n m , . - ",
-          "{accept} {cancel}"
-        ],
-        'shift' : [
-          '\u00bd ! " # \u00a4 % & / ( ) = ? \u0300 {b}',
-          "Q W E R T Y U I O P \u00c5 ^",
-          "A S D F G H J K L \u00c6 \u00d8 * ",
-          "{shift} > Z X C V B N M ; : _ ",
-          "{accept} {cancel}"
-        ]
-      }
-    });
+  // $('#email').keyboard({ openOn : '', stayOpen : true,
+     // layout : 'custom',
+     // customLayout: {
+        // 'default' : [
+          // "@ 1 2 3 4 5 6 7 8 9 0 + @ {b}",
+          // "q w e r t y u i o p \u00e5 \u00a8",
+          // " a s d f g h j k l \u00e6 \u00f8 ' ",
+          // "{shift} < z x c v b n m , . - ",
+          // "{accept} {cancel}"
+        // ],
+        // 'shift' : [
+          // '\u00bd ! " # \u00a4 % & / ( ) = ? \u0300 {b}',
+          // "Q W E R T Y U I O P \u00c5 ^",
+          // "A S D F G H J K L \u00c6 \u00d8 * ",
+          // "{shift} > Z X C V B N M ; : _ ",
+          // "{accept} {cancel}"
+        // ]
+      // }
+    // });
 
-  $('.keyimg').click(function(){ $('#email').getkeyboard().reveal();});
+  // $('.keyimg').click(function(){ $('#email').getkeyboard().reveal();});
 
   // menuen
   //create_menu();
@@ -288,50 +288,50 @@ $(document).ready(function(){
   create_events();
 
   // submit
-  $("form").submit(function() {
+  // $("form").submit(function() {
 
-      // meget simpel emailvalidering
-      if ( this.param1.value.search(/.*@.*/) == -1 ) {
-         this.param1.focus();
-         $('#message').html('<div class="message-info"><p>Skriv din email adresse</p></div>');
-         return false;
-      }
+      // // meget simpel emailvalidering
+      // if ( this.param1.value.search(/.*@.*/) == -1 ) {
+         // this.param1.focus();
+         // $('#message').html('<div class="message-info"><p>Skriv din email adresse</p></div>');
+         // return false;
+      // }
 
-      // udtræk indhold - klar til ajax
-      var str = $("form").serialize();
+      // // udtræk indhold - klar til ajax
+      // var str = $("form").serialize();
 
-      $.ajax({
-          type: 'POST',
-          url: '/cgi-bin/sendlink.pl',
-          data: str,
-          success: function(data) {
-              // efter submit
-              // vis resultat
+      // $.ajax({
+          // type: 'POST',
+          // url: '/cgi-bin/sendlink.pl',
+          // data: str,
+          // success: function(data) {
+              // // efter submit
+              // // vis resultat
 
-              if (data == "1") {
-                $('#message').html('<div class="message-success"><p>Din email er sendt.</p></div>');
-              }
-              else {
-                $('#message').html('<div class="message-error"><p>Der er sket en fejl, prøv igen.</p></div>');
-              }
+              // if (data == "1") {
+                // $('#message').html('<div class="message-success"><p>Din email er sendt.</p></div>');
+              // }
+              // else {
+                // $('#message').html('<div class="message-error"><p>Der er sket en fejl, prøv igen.</p></div>');
+              // }
 
-              // skjul formularen
-              $('#myform').hide();
-              // tøm indhold i formularen
-              $('input:text').val('');
+              // // skjul formularen
+              // $('#myform').hide();
+              // // tøm indhold i formularen
+              // $('input:text').val('');
 
-              // fadeout hele popup og luk den til sidst
-              $('#popup').fadeOut(4000, function(){ $.fancybox.close() } );
+              // // fadeout hele popup og luk den til sidst
+              // $('#popup').fadeOut(4000, function(){ $.fancybox.close() } );
 
-              },
-          dataType: 'html',
-          error: function(jqXHR, textmsg) {
-                $('#message').html('<div class="message-error"><p>Der er sket en hændelsestype: ' + textmsg + ' , prøv igen.</p></div>');
-              }
+              // },
+          // dataType: 'html',
+          // error: function(jqXHR, textmsg) {
+                // $('#message').html('<div class="message-error"><p>Der er sket en hændelsestype: ' + textmsg + ' , prøv igen.</p></div>');
+              // }
 
-        });
-      return false;
-    });
+        // });
+      // return false;
+    // });
 
    // check for updates
   carousel.starttime = (new Date()).getTime();
