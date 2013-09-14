@@ -222,7 +222,7 @@ function show_popupbox(idno) {
     // bannerdata.id[idno].d = '';
   // }
 
-  $('#bookdata').html( '<div><h3>' + bannerdata.id[idno].t + '</h3>' 
+  $('#popupdata').html( '<div><h3>' + bannerdata.id[idno].t + '</h3>' 
   //+ '<img class="popup-image" src="' + bannerdata.prefix + bannerdata.id[idno].src + '" />' 
   //+ bannerdata.id[idno].d 
   + '<iframe width="500" height="400" src="http://www.youtube.com/embed/' + bannerdata.id[idno].youtubeid + '?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>'

@@ -167,7 +167,7 @@ input.ui-widget-content { top: 25%; }
   font-weight: bold;
 }
 
-#popup #bookdata img { width: 100px;height:auto;float:left;padding:0 5px 5px 0; }
+#popup #popupdata img { width: 100px;height:auto;float:left;padding:0 5px 5px 0; }
 
 #myform { clear:both;}
 
