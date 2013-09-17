@@ -212,8 +212,8 @@ input.ui-widget-content { top: 25%; }
   overflow: hidden;
 }
  */
-#fancybox-inner{
-    -webkit-overflow-scrolling: touch;
+.fancybox-inner {
+   -webkit-overflow-scrolling: touch;
 } 
  
 #fancybox-close {
