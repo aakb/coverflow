@@ -202,7 +202,7 @@ input.ui-widget-content { top: 25%; }
   background: #f7c4c4 url('../images/icon-error.png') no-repeat 5% 50%;
   border: 1px solid #d92222;
 }
-
+/* 
 .fancybox-wrap {
   margin: 0;
   z-index: 20000;
@@ -211,7 +211,11 @@ input.ui-widget-content { top: 25%; }
 .fancybox-inner {
   overflow: hidden;
 }
-
+ */
+#fancybox-inner{
+    -webkit-overflow-scrolling: touch;
+} 
+ 
 #fancybox-close {
   position: absolute;
   top: -15px;
