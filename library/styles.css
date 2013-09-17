@@ -78,12 +78,16 @@ body {
 }
 
 .slogan {
-  color: #000;
   right: 10px;
   bottom:10px;
   position: absolute;
   overflow: hidden;
+}
+
+.slogan H1 {
   font: 1.2em Arial,Helvetica,sans-serif;
+  color: #000;
+  text-align:right;
 }
 
 .logo {
