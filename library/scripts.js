@@ -163,13 +163,13 @@ function create_events() {
       });
 
     // pile-tasterne
-    $("body").on('keyup', function (e) { if (event.which == 39) { $('.imagebanner-right').click()} else if (event.which == 37) { $('.imagebanner-left').click()} });
+    $("body").on('keyup', function (event) { if (event.which == 39) { $('.imagebanner-right').click()} else if (event.which == 37) { $('.imagebanner-left').click()} });
 
     // inaktiv-checkeren...
     carousel.idleTime = 0;
     setInterval(function() { carousel.idleTime+= 3; if(carousel.idleTime>=9) { $('.imagebanner-right').click();} }, 3000);
-    $("body").on('mousemove', function (e) { carousel.idleTime = 0; });
-    $("body").on('keypress',  function (e) { carousel.idleTime = 0; });
+    $("body").on('mousemove', function (event) { carousel.idleTime = 0; });
+    $("body").on('keypress',  function (event) { carousel.idleTime = 0; });
 
     // resize vil ændre størrelser som hermed opdateres
     $(window).on('resize', banner_recalculate);
