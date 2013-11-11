@@ -130,6 +130,9 @@ function banner_recalculate(onlyImg) {
 function scroll(evnt){
   // håndter scrol af billeder hvilket dels betyder opdatering af indholdet i banneret og dels selve scrolningen
 
+  // skip scrol hvis fancybox er åben
+  if ( $.fancybox.isOpen ) return;
+
   // karusellen skifter så nulstil idletime
   carousel.idleTime=0;
 
