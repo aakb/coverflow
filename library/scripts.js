@@ -5,8 +5,8 @@ var carousel = { };
 var myConfig = {
   max_image_width : 330,
   max_image_height : 330,
-  iframe_width : 480, 
-  iframe_height : 360, // 4/3 forhold 
+  iframe_width : 480,
+  iframe_height : 360, // 4/3 forhold
   image_border : 3, // pixels
   space_between_images : 0.20, // procent
   visible_images : 3, // synlige
@@ -179,7 +179,7 @@ function create_events() {
 
     // klik på billede skal trigge popup
     $(".imagebanner").on("click", "img", function(event){ show_popupbox($(this).data('id'));return false; });
-    
+
     $(".logo").on("click", function(event){ location.href = myConfig.logo_url });
 
 }
@@ -197,13 +197,13 @@ function update_li_element(key, value){
 function show_popupbox(idno) {
 
 
-  $('#popupdata').html( '<h3>' + bannerdata.id[idno].t + '</h3>' 
-  //+ '<img class="popup-image" src="' + bannerdata.prefix + bannerdata.id[idno].src + '" />' 
-  //+ bannerdata.id[idno].d 
+  $('#popupdata').html( '<h3>' + bannerdata.id[idno].t + '</h3>'
+  //+ '<img class="popup-image" src="' + bannerdata.prefix + bannerdata.id[idno].src + '" />'
+  //+ bannerdata.id[idno].d
   + '<iframe width="'+ myConfig.iframe_width +'" height="'+ myConfig.iframe_height +'" src="http://www.youtube.com/embed/' + bannerdata.id[idno].youtubeid + '?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>'
   + '<div class="popup-desc">' + bannerdata.id[idno].d + '</div>'
   + '');
- 
+
   // vis boksen (ifald den tidligere er fadeout
   $('#popup').show();  // hide efter submit 4 sek
 
@@ -211,7 +211,7 @@ function show_popupbox(idno) {
   var maxfancyheight = Math.floor($('#imagecontainer').outerHeight()*0.75);
   $("#inline").fancybox({ maxHeight : maxfancyheight }).click();
 
-  // log visning af fancyboks  
+  // log visning af fancyboks
   ga('send', 'event', 'image', 'click', 'node', idno);
 
 }
