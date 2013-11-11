@@ -208,6 +208,9 @@ function show_popupbox(idno) {
   var maxfancyheight = Math.floor($('#imagecontainer').outerHeight()*0.75);
   $("#inline").fancybox({ maxHeight : maxfancyheight }).click();
 
+  // log visning af fancyboks  
+  ga('send', 'event', 'image', 'click', 'node', idno);
+
 }
 
 function check_updates(){
