@@ -212,7 +212,7 @@ function show_popupbox(idno) {
   $("#inline").fancybox({ maxHeight : maxfancyheight }).click();
 
   // log visning af fancyboks
-  ga('send', 'event', 'image', 'click', 'node', idno);
+  ga('send', 'event', 'image', 'click', 'node-' + idno);
 
 }
 
