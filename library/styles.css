@@ -219,7 +219,7 @@ input.ui-widget-content { top: 25%; }
 .fancybox-inner {
    -webkit-overflow-scrolling: touch;
 } 
- 
+/* 
 #fancybox-close {
   position: absolute;
   top: -15px;
@@ -232,7 +232,7 @@ input.ui-widget-content { top: 25%; }
   z-index: 1103;
   display: none;
 }
-
+*/
 .ui-keyboard{ padding: .3em; }
 .ui-keyboard-button{height: 3em; width: 3em; margin: .1em;}
 .ui-keyboard-button span {font-size: 1.5em;}
