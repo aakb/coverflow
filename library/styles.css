@@ -96,7 +96,7 @@ body {
   height: 100%;
   float: left;
   margin-left:31px;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .content {
