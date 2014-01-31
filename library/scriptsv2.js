@@ -16,7 +16,7 @@ var myConfig = {
   opacity : 0.8, // opacity til knapper når animation er aktiv
   update_check : 3600*1000, // check hver time
   update_period : 86400 * 1000 / 2, // reload hver 12. time
-  logo_url : 'http://emusik.dk/'
+  logo_url : ''
 };
 
 Array.prototype.shuffle = function () {
@@ -180,7 +180,7 @@ function create_events() {
     // klik på billede skal trigge popup
     $(".imagebanner").on("click", "img", function(event){ show_popupbox($(this).data('id'));return false; });
 
-    $(".logo").on("click", function(event){ location.href = myConfig.logo_url });
+    if (myConfig.logo_url) $(".logo").on("click", function(event){ location.href = myConfig.logo_url });
 
 }
 
